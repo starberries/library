@@ -1,4 +1,4 @@
-const myLibrary = [];
+const myLibrary = [book, book2, book3, book4];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -25,3 +25,18 @@ function addBookToLibrary() {
     let read = prompt("Read it yet?");
     myLibrary.push(new Book(title, author, pages, read));
 }
+
+function displayBooks() {
+    let sec = document.getElementById("books")
+    myLibrary.forEach(book => {
+        let div = document.createElement("div")
+        div.setAttribute("class", "card")
+        let title = document.createElement("h2")
+        title.setAttribute("class", "title")
+        title.textContent = book.title
+        sec.appendChild(div);
+        div.appendChild(title);
+    });
+}
+
+displayBooks();
