@@ -28,17 +28,24 @@ function addBookToLibrary() {
 }
 
 function displayBooks() {
-    let sec = document.getElementById("books")
+    let sec = document.querySelector("#books")
     sec.innerHTML = ''
     myLibrary.forEach(book => {
         let div = document.createElement("div")
         div.setAttribute("class", "card")
+        div.dataset.index = myLibrary.indexOf(book)
+
         let title = document.createElement("h2")
         title.setAttribute("class", "title")
         title.textContent = book.title
         sec.appendChild(div);
         div.appendChild(title);
     });
+}
+
+function removeBook(book) {
+    myLibrary.splice(book, 1);
+    displayBooks();
 }
 
 displayBooks();
