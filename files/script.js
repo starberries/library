@@ -16,6 +16,9 @@ function Book(title, author, pages, read) {
         let summary = `${this.title} by ${this.author}, ${this.pages} pages, ` + readYet
         return summary
     };
+    this.toggle = () => {
+        this.read = !this.read;
+    }
 };
 
 function addBookToLibrary() {
@@ -46,9 +49,14 @@ function displayBooks() {
             displayBooks();
         })
 
+        let toggleButton = document.createElement("button")
+        toggleButton.textContent = "Read?"
+        toggleButton.addEventListener("click", myLibrary[index].toggle)
+
         sec.appendChild(div);
         div.appendChild(title);
         div.appendChild(deleteButton);
+        div.appendChild(toggleButton);
     });
 }
 
