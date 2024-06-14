@@ -30,7 +30,7 @@ function addBookToLibrary() {
 function displayBooks() {
     let sec = document.querySelector("#books")
     sec.innerHTML = ''
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         let div = document.createElement("div")
         div.setAttribute("class", "card")
         div.dataset.index = myLibrary.indexOf(book)
@@ -39,14 +39,17 @@ function displayBooks() {
         title.setAttribute("class", "title")
         title.textContent = book.title
 
+        let deleteButton = document.createElement("button")
+        deleteButton.textContent = "Remove"
+        deleteButton.addEventListener("click", () => {
+            myLibrary.splice(index,1);
+            displayBooks();
+        })
+
         sec.appendChild(div);
         div.appendChild(title);
+        div.appendChild(deleteButton);
     });
-}
-
-function removeBook(book) {
-    myLibrary.splice(book, 1);
-    displayBooks();
 }
 
 displayBooks();
