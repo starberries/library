@@ -1,4 +1,4 @@
-const myLibrary = [book, book2, book3, book4];
+const myLibrary = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -24,10 +24,12 @@ function addBookToLibrary() {
     let pages = prompt("Number of Pages:");
     let read = prompt("Read it yet?");
     myLibrary.push(new Book(title, author, pages, read));
+    displayBooks();
 }
 
 function displayBooks() {
     let sec = document.getElementById("books")
+    sec.innerHTML = ''
     myLibrary.forEach(book => {
         let div = document.createElement("div")
         div.setAttribute("class", "card")
