@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -38,6 +38,7 @@ function displayBooks() {
         let title = document.createElement("h2")
         title.setAttribute("class", "title")
         title.textContent = book.title
+
         sec.appendChild(div);
         div.appendChild(title);
     });
